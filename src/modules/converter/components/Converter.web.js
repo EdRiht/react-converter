@@ -21,16 +21,18 @@ const LABLES = {
   }
 };
 
+const initialState = {
+  currentType: CONVERT_TYPES.roman,
+  fromInput: "",
+  toInput: "",
+  hasError: false
+};
+
 class Converter extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentType: CONVERT_TYPES.roman,
-      fromInput: "",
-      toInput: "",
-      hasError: false
-    };
+    this.state = initialState;
 
     this.onChangeClick = this.onChangeClick.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
@@ -65,16 +67,15 @@ class Converter extends React.PureComponent {
         currentType === CONVERT_TYPES.arabic ? toArabic(value) : toRoman(value);
 
       this.setState({
-        fromInput: value,
+        fromInput: value.toUpperCase(),
         toInput: normalizedValue || "",
         hasError: !normalizedValue
       });
     } else {
-      this.setState({
-        hasError: false,
-        fromInput: "",
-        toInput: ""
-      });
+      this.setState(prevState => ({
+        ...initialState,
+        currentType: prevState.currentType
+      }));
     }
   };
 

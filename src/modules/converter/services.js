@@ -1,4 +1,10 @@
+import { MAX_INTEGER_VALUE } from "./constants";
+
 export const toRoman = value => {
+  if (!value || parseInt(value) > MAX_INTEGER_VALUE) {
+    return null;
+  }
+
   var lookup = {
       M: 1000,
       CM: 900,
