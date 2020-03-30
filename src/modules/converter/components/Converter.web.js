@@ -4,6 +4,7 @@ import { colors, spacing } from "../../../styles";
 import { Grid, TextField, Fab, Tooltip } from "@material-ui/core";
 import SwapHoriz from "@material-ui/icons/SwapHoriz";
 import { toArabic, toRoman } from "../services";
+import { MAX_INTEGER_VALUE } from "../constants";
 
 const CONVERT_TYPES = {
   arabic: "arabic",
@@ -44,10 +45,10 @@ class Converter extends React.PureComponent {
     if (hasError) {
       return "Incorrect value.";
     } else if (currentType === CONVERT_TYPES.roman) {
-      return "Enter an integer number between 1 and 3999";
+      return `Enter an integer number between 1 and ${MAX_INTEGER_VALUE}`;
     }
 
-    return null;
+    return "Enter an roman number between I and MMMCMXCIX";
   }
 
   onChangeClick = () => {

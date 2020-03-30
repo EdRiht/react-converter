@@ -7,4 +7,4 @@ Number converter built with React.js<br/><br/><br/>
 3. Run `npm install` or `yarn`<br/><br/>
 
 <b>Usage</b><br/>
-Run `npm web` or `yarn web`<br/><br/><br/>
+Run `npm run web` or `yarn web`<br/><br/><br/>
