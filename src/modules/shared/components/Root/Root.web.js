@@ -20,7 +20,8 @@ class Root extends React.PureComponent {
 
 const styles = theme => ({
   header: {
-    paddingLeft: spacing.s2
+    paddingLeft: spacing.s2,
+    color: colors.gray.lightGray
   },
   wrapper: {
     position: "relative",

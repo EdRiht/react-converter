@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { colors, spacing } from "../../../styles";
 import { Grid, TextField, Fab, Tooltip } from "@material-ui/core";
 import SwapHoriz from "@material-ui/icons/SwapHoriz";
+import { toArabic, toRoman } from "../services";
 
 const CONVERT_TYPES = {
   arabic: "arabic",
@@ -26,9 +27,25 @@ class Converter extends React.PureComponent {
 
     this.state = {
       currentType: CONVERT_TYPES.roman,
+      fromInput: "",
+      toInput: "",
+      hasError: false
     };
 
     this.onChangeClick = this.onChangeClick.bind(this);
+    this.onChangeInput = this.onChangeInput.bind(this);
+  }
+
+  get helperTextForFromValue() {
+    const { hasError, currentType } = this.state;
+
+    if (hasError) {
+      return "Incorrect value.";
+    } else if (currentType === CONVERT_TYPES.roman) {
+      return "Enter an integer number between 1 and 3999";
+    }
+
+    return null;
   }
 
   onChangeClick = () => {
@@ -36,7 +53,29 @@ class Converter extends React.PureComponent {
       this.state.currentType === CONVERT_TYPES.arabic
         ? CONVERT_TYPES.roman
         : CONVERT_TYPES.arabic;
-    this.setState({ currentType: nextType });
+    this.setState({ currentType: nextType, fromInput: "", toInput: "" });
+  };
+
+  onChangeInput = event => {
+    const { currentType } = this.state;
+    const { value } = event.target;
+
+    if (value) {
+      const normalizedValue =
+        currentType === CONVERT_TYPES.arabic ? toArabic(value) : toRoman(value);
+
+      this.setState({
+        fromInput: value,
+        toInput: normalizedValue || "",
+        hasError: !normalizedValue
+      });
+    } else {
+      this.setState({
+        hasError: false,
+        fromInput: "",
+        toInput: ""
+      });
+    }
   };
 
   render() {
@@ -80,7 +119,10 @@ class Converter extends React.PureComponent {
             fullWidth
             id="outlined-required"
             label={`From ${LABLES[currentType].from}`}
-            value=""
+            value={this.state.fromInput}
+            onChange={this.onChangeInput}
+            error={this.state.hasError}
+            helperText={this.helperTextForFromValue}
             variant="outlined"
           />
         </Grid>
@@ -91,7 +133,7 @@ class Converter extends React.PureComponent {
             disabled
             id="outlined-required"
             label={`To ${LABLES[currentType].to}`}
-            value=""
+            value={this.state.toInput}
             variant="outlined"
           />
         </Grid>
