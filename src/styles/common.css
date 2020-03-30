@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 100;
+    src: local('HelveticaNeueCyr');
+    src: url('./fonts/HelveticaNeueCyr-Light.eot');
+    src: url('./fonts/HelveticaNeueCyr-Light.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/HelveticaNeueCyr-Light.woff') format('woff'),
+        url('./fonts/HelveticaNeueCyr-Light.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 400;
+    src: local('HelveticaNeueCyr');
+    src: url('./fonts/HelveticaNeueCyr-Medium.eot');
+    src: url('./fonts/HelveticaNeueCyr-Medium.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/HelveticaNeueCyr-Medium.woff') format('woff'),
+        url('./fonts/HelveticaNeueCyr-Medium.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 700;
+    src: local('HelveticaNeueCyr');
+    src: url('./fonts/HelveticaNeueCyr-Bold.eot');
+    src: url('./fonts/HelveticaNeueCyr-Bold.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/HelveticaNeueCyr-Bold.woff') format('woff'),
+        url('./fonts/HelveticaNeueCyr-Bold.ttf') format('truetype')
+}
+body {
+    font-family: "Ubuntu", "HelveticaNeueCyr", "Helvetica", "sans-serif" !important;
+    margin: 0 !important;
+}
+
+#app {
+    height: 100%;
+}
+
+.MuiGrid-grid-sm-4 {
+    padding: 0 42px 42px 42px !important;
+    align-items: center !important;
+    display: flex;
+}
