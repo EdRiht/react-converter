@@ -1,12 +1,10 @@
-Simple app with mocks and quick resolutions :)
+# React Number Converter
+Number converter built with React.js<br/><br/><br/>
 
-## Available Scripts
+<b>Installation</b><br/>
+1. Clone repo: `git clone`<br/><br/>
+2. `cd react-converter`<br/><br/>
+3. Run `npm install` or `yarn`<br/><br/>
 
-In the project directory, you can run (after #`yarn`):
-
-### `yarn web`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
-
-### `yarn build`
+<b>Usage</b><br/>
+Run `npm web` or `yarn web`<br/><br/><br/>
